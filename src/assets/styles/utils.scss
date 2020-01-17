@@ -237,3 +237,21 @@ div.dib {
   -ms-pointer-events: none;
   pointer-events: none;
 }
+
+// 弹性布局 纵向 垂直水平居中
+.flex-col-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// 表格
+
+.form {
+  padding: 20px;
+}
+
+.form-item {
+  margin-top: 20px;
+}
