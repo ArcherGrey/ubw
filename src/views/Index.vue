@@ -10,11 +10,10 @@ export default {
   methods: {
     logout() {
       localStorage.clear();
-      this.$router.push('/');
+      this.$router.push("/");
     }
   }
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
