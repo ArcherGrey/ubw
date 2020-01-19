@@ -1,51 +1,70 @@
 <template>
   <a-form :form="form" class="flex-col-center form">
-    <a-input placeholder="请输入姓名" class="form-item" v-model="userName" ref="userNameInput">
+    <a-input
+      placeholder="请输入姓名"
+      class="form-item"
+      v-model="userName"
+      ref="userNameInput"
+    >
       <a-icon slot="prefix" type="user" />
-      <a-icon v-if="userName" slot="suffix" type="close-circle" @click="emitEmpty" />
+      <a-icon
+        v-if="userName"
+        slot="suffix"
+        type="close-circle"
+        @click="emitEmpty"
+      />
     </a-input>
     <a-input placeholder="请输入密码" :type="pswType" class="form-item">
       <a-icon slot="prefix" type="lock" />
-      <a-icon v-if="showPsw" slot="suffix" type="eye" @click="showPswHandler" />
-      <a-icon v-if="!showPsw" slot="suffix" type="eye-invisible" @click="hidePswHandler" />
+      <a-icon
+        v-if="!showPsw"
+        slot="suffix"
+        type="eye-invisible"
+        @click="showPswHandler"
+      />
+      <a-icon v-if="showPsw" slot="suffix" type="eye" @click="hidePswHandler" />
     </a-input>
-    <a-button class="form-item">{{ btnMsg }}</a-button>
+    <a-button class="form-item" @click="submit">{{ btnMsg }}</a-button>
   </a-form>
 </template>
 
 <script>
+import { test } from "@/request/api"; // 导入api接口
 export default {
-  name: 'LoginBox',
+  name: "LoginBox",
   props: {
     form: Object,
     btnMsg: String
   },
   data() {
     return {
-      userName: '',
+      userName: "",
       showPsw: false
     };
   },
   methods: {
     emitEmpty() {
       this.$refs.userNameInput.focus();
-      this.userName = '';
+      this.userName = "";
     },
     hidePswHandler() {
       this.showPsw = false;
     },
     showPswHandler() {
       this.showPsw = true;
+    },
+    submit() {
+      test().then(res => {
+        console.log("测试" + res);
+      });
     }
   },
   computed: {
     pswType() {
-      return !this.showPsw ? 'password' : 'text';
+      return !this.showPsw ? "password" : "text";
     }
   }
 };
 </script>
 
-
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

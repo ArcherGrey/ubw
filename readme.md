@@ -4,5 +4,15 @@
 
 vue-cli3 创建项目
 
-- 前端 ui 组件：`ant-design-vue`
-- `devRun.bat` 自动运行脚本
+- 前端
+  - 前端 ui 组件：`ant-design-vue`
+  - `devRun.bat` 自动运行脚本
+- 后端
+  - koa
+    - koa-router
+
+## 解决问题
+
+|              问题              |        解决        |
+| :----------------------------: | :----------------: |
+| 登录注册页面密码框显示隐藏功能 | 修改 input 的 type |
