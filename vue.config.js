@@ -9,6 +9,12 @@ module.exports = {
   },
   devServer: {
     // 路由 history 模式配置
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080"
+      }
+    }
   }
 };

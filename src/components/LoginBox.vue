@@ -55,7 +55,7 @@ export default {
     },
     submit() {
       test().then(res => {
-        console.log("测试" + res);
+        console.log("测123" + res.data);
       });
     }
   },
