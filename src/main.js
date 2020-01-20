@@ -9,12 +9,13 @@ import "ant-design-vue/dist/antd.css";
 
 // 引入全局样式
 import "@/assets/styles/index.scss";
-
+import * as api from "@/request/api"; // 导入api接口
 Vue.config.productionTip = false;
 
 // 使用 antd-vue
 Vue.use(Antd);
 
+Vue.prototype.$http = api;
 new Vue({
   router,
   store,

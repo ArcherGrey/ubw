@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { test } from "@/request/api"; // 导入api接口
 export default {
   name: "LoginBox",
   props: {
@@ -54,7 +53,8 @@ export default {
       this.showPsw = true;
     },
     submit() {
-      test().then(res => {
+      debugger;
+      this.$http.test().then(res => {
         console.log("测123" + res.data);
       });
     }
