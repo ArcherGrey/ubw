@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .wrapper {
   width: 300px;
-  height: 500px;
+  height: 300px;
   box-shadow: 1px 1px 8px #4d4d4d;
   .ant-tabs-card {
     height: 100%;
@@ -59,7 +59,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 50px;
+      padding: 10px 20px;
     }
   }
 }

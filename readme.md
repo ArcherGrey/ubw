@@ -20,6 +20,12 @@ D:\ide\mongodb\bin\bin\mongod.exe --config "D:\gr\github\ubw\server\db\mongod.cf
 net start MongoDB
 ```
 
+关闭服务：
+
+```
+net stop MongoDB
+```
+
 ### :open_file_folder: 代码
 
 顺序
