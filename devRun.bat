@@ -1,5 +1,5 @@
 @echo off
-:: 自动运行脚本
+:: 前端自动构建脚本
 COLOR C
-npm run serve
+npm run watch
 pause

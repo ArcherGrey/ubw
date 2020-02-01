@@ -1,2 +1,3 @@
 @echo off
-npm run build
+@echo 前端自动构建
+npm run watch

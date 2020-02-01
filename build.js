@@ -1,15 +1,13 @@
 // 仅在 Windows 上。
 const { spawn } = require("child_process");
-const bat = spawn("cmd.exe", ["/k", "build.bat"]);
 
-bat.stdout.on("data", data => {
-  console.log(data.toString());
+// -k 是执行完命令不关闭cmd
+const bat1 = spawn("cmd.exe", ["/k", "build.bat"]);
+const bat2 = spawn("cmd.exe", ["/k", "build2.bat"]);
+
+bat1.on("exit", code => {
+  console.log(`子进程1退出，退出码 ${code}`);
 });
-
-bat.stderr.on("data", data => {
-  console.error(data.toString());
-});
-
-bat.on("exit", code => {
-  console.log(`子进程退出，退出码 ${code}`);
+bat2.on("exit", code => {
+  console.log(`子进程2退出，退出码 ${code}`);
 });
