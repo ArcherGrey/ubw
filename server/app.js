@@ -2,6 +2,14 @@ const Koa = require("koa");
 const app = new Koa();
 const router = require("./routes/index");
 const path = require("path");
+const mongo = require("koa-mongo");
+
+// mongo 中间件
+app.use(
+  mongo({
+    db: "test"
+  })
+);
 
 // require 'koa2-connect-history-api-fallback' middleware
 const { historyApiFallback } = require("koa2-connect-history-api-fallback");

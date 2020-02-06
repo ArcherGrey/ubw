@@ -13,6 +13,7 @@
   "dependencies": {
     "@koa/router": "^8.0.5",
     "koa": "^2.11.0",
+    "koa-mongo": "^1.9.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa2-connect-history-api-fallback": "^0.1.2"

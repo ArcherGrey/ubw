@@ -1,10 +1,7 @@
 const Router = require("koa-router");
 const router = new Router({ prefix: "/api" });
+const login = require("../controllers/login.js");
 
-router.get("/login", (ctx, next) => {
-  ctx.body = { data: "22" };
-  ctx.status = 200;
-  console.log(new Date().toString());
-});
+router.get("/login", login);
 
 module.exports = router;
