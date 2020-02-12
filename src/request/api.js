@@ -4,4 +4,4 @@
 import { get } from "./http";
 import { prefix } from "./config";
 
-export const test = p => get(`${prefix}/login`, p);
+export const login = p => get(`${prefix}/login`, p);

@@ -14,7 +14,12 @@
         @click="emitEmpty"
       />
     </a-input>
-    <a-input placeholder="请输入密码" :type="pswType" class="form-item">
+    <a-input
+      placeholder="请输入密码"
+      :type="pswType"
+      class="form-item"
+      v-model="password"
+    >
       <a-icon slot="prefix" type="lock" />
       <a-icon
         v-if="!showPsw"
@@ -38,6 +43,7 @@ export default {
   data() {
     return {
       userName: "",
+      password: "",
       showPsw: false
     };
   },
@@ -53,9 +59,22 @@ export default {
       this.showPsw = true;
     },
     submit() {
-      debugger;
-      this.$http.test().then(res => {
-        console.log("测123" + res.data);
+      let userInfo = {
+        userName: this.userName,
+        password: this.password,
+        type: this.btnMsg
+      };
+      this.$http.login(userInfo).then(res => {
+        if (res.code === 200) {
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify({ userName: this.userName, password: this.password })
+          );
+          this.$message.success(res.message);
+          setTimeout(this.$route.redirect);
+        } else {
+          this.$message.error(res.message);
+        }
       });
     }
   },
