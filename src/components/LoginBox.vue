@@ -1,32 +1,12 @@
 <template>
   <a-form :form="form" class="flex-col-center form">
-    <a-input
-      placeholder="请输入姓名"
-      class="form-item"
-      v-model="userName"
-      ref="userNameInput"
-    >
+    <a-input placeholder="请输入姓名" class="form-item" v-model="userName" ref="userNameInput">
       <a-icon slot="prefix" type="user" />
-      <a-icon
-        v-if="userName"
-        slot="suffix"
-        type="close-circle"
-        @click="emitEmpty"
-      />
+      <a-icon v-if="userName" slot="suffix" type="close-circle" @click="emitEmpty" />
     </a-input>
-    <a-input
-      placeholder="请输入密码"
-      :type="pswType"
-      class="form-item"
-      v-model="password"
-    >
+    <a-input placeholder="请输入密码" :type="pswType" class="form-item" v-model="password">
       <a-icon slot="prefix" type="lock" />
-      <a-icon
-        v-if="!showPsw"
-        slot="suffix"
-        type="eye-invisible"
-        @click="showPswHandler"
-      />
+      <a-icon v-if="!showPsw" slot="suffix" type="eye-invisible" @click="showPswHandler" />
       <a-icon v-if="showPsw" slot="suffix" type="eye" @click="hidePswHandler" />
     </a-input>
     <a-button class="form-item" @click="submit">{{ btnMsg }}</a-button>
@@ -35,22 +15,22 @@
 
 <script>
 export default {
-  name: "LoginBox",
+  name: 'LoginBox',
   props: {
     form: Object,
     btnMsg: String
   },
   data() {
     return {
-      userName: "",
-      password: "",
+      userName: '',
+      password: '',
       showPsw: false
     };
   },
   methods: {
     emitEmpty() {
       this.$refs.userNameInput.focus();
-      this.userName = "";
+      this.userName = '';
     },
     hidePswHandler() {
       this.showPsw = false;
@@ -66,12 +46,11 @@ export default {
       };
       this.$http.login(userInfo).then(res => {
         if (res.code === 200) {
-          localStorage.setItem(
-            "userInfo",
-            JSON.stringify({ userName: this.userName, password: this.password })
-          );
+          localStorage.setItem('userInfo', JSON.stringify({ userName: this.userName, password: this.password }));
           this.$message.success(res.message);
-          setTimeout(this.$route.redirect);
+          setTimeout(() => {
+            this.$router.go('/');
+          }, 1000);
         } else {
           this.$message.error(res.message);
         }
@@ -80,7 +59,7 @@ export default {
   },
   computed: {
     pswType() {
-      return !this.showPsw ? "password" : "text";
+      return !this.showPsw ? 'password' : 'text';
     }
   }
 };
